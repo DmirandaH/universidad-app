@@ -18,20 +18,44 @@ app.get('/', (req, res) => {
 
 app.get('/estudiantes', (req, res) => {
 
-    //creo el objecto estudiante 
+    //creo el array de estudiantes 
 
-    const estudiante = {
+
+    const estudiantes = [ 
+
+        {
         id: 1,
-        nombre: 'dayan',
+        nombre: 'Dayan',
         curso: 'creacion Api',
         correo: 'mirdev@corp.com' 
-    }
+    },
 
-// // Simulamos un estudiante obtenido desde la base de datos
-    res.json(estudiante);
+       {
+        id: 2,
+        nombre: 'Maria',
+        curso: 'Desarrollo Web',
+        correo: 'mariadb@dark.com' 
+    },
+
+
+       {
+        id: 3,
+        nombre: 'Paola',
+        curso: 'Arquitectura de Software',
+        correo: 'paola@micro.com' 
+    },
+
+    ]
+
+// // Simulamos una colección de estudiantes obtenidos desde la base de datos
+    res.json(estudiantes);
 
 });
 
+
+app.get('/id',(req, res) => {
+    res.json(id)
+}); 
 
 
 // Iniciamos el servidor
