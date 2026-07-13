@@ -10,18 +10,8 @@ const PORT = 3000;
 
 
 
-//Ruta principal
-app.get('/', (req, res) => {
-    res.send('Servidor funcionando correctamente');
-
-});
-
-app.get('/estudiantes', (req, res) => {
-
-    //creo el array de estudiantes 
-
-
-    const estudiantes = [ 
+//creo el array de estudiantes 
+ const estudiantes = [ 
 
         {
         id: 1,
@@ -45,7 +35,17 @@ app.get('/estudiantes', (req, res) => {
         correo: 'paola@micro.com' 
     },
 
-    ]
+]
+
+
+//Ruta principal
+app.get('/', (req, res) => {
+    res.send('Servidor funcionando correctamente');
+
+});
+
+app.get('/estudiantes', (req, res) => {
+
 
 // // Simulamos una colección de estudiantes obtenidos desde la base de datos
     res.json(estudiantes);
@@ -53,8 +53,29 @@ app.get('/estudiantes', (req, res) => {
 });
 
 
-app.get('/id',(req, res) => {
-    res.json(id)
+app.get('/estudiantes/:id',(req, res) => {
+    const idEstudiante = parseInt(req.params.id);
+    //console.log(id);
+
+   const estudiante = estudiantes.find(estudiante => estudiante.id === idEstudiante);
+
+    //console.log(estudiantes);
+
+    if(!estudiante) {
+        return res.status(404).json({
+            mensaje: 'Usuario no encontrado'
+        });
+
+    } res.json(estudiante);
+   
+
+
+   /* res.json({
+        mensaje: 'Buscando estudiante',
+        idSolicitado: id
+    });*/
+  
+
 }); 
 
 
