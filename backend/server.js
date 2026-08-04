@@ -5,6 +5,8 @@ const express = require('express');
 //Creando una instancia de Express
 const app = express();
 
+app.use(express.json());
+
 //Definimos el puerto
 const PORT = 3000;
 
@@ -79,7 +81,34 @@ app.get('/estudiantes/:id',(req, res) => {
 }); 
 
 
+
+// Creando un estudiante
+
+app.post('/estudiantes', (req, res) => {
+
+    const {nombre, correo, curso} = req.body;
+
+    // validar datos 
+
+    if(!nombre || !correo || !curso) {
+        return res.status(400).json({error: 'Faltan datos obligatorios';
+        })
+
+    }
+
+    const NuevoEstudiante = {
+        id: estudiantes.length + 1,
+        nombre,
+        correo,
+        curso
+    };
+
+
+})
+
 // Iniciamos el servidor
 app.listen(PORT, () => {
     console.log(`servidor escuchando en http://localhost:${PORT}`);
 });
+
+
