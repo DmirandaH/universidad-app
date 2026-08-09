@@ -82,7 +82,7 @@ app.get('/estudiantes/:id',(req, res) => {
 
 
 
-// Creando un estudiante
+// Creando un nuevo estudiante
 
 app.post('/estudiantes', (req, res) => {
 
@@ -91,8 +91,8 @@ app.post('/estudiantes', (req, res) => {
     // validar datos 
 
     if(!nombre || !correo || !curso) {
-        return res.status(400).json({error: 'Faltan datos obligatorios';
-        })
+        return res.status(400).json({error: 'Faltan datos obligatorios'
+        });
 
     }
 
@@ -103,8 +103,14 @@ app.post('/estudiantes', (req, res) => {
         curso
     };
 
+    estudiantes.push(NuevoEstudiante);
+    res.status(201).json({
+        mensaje: 'Estudiante creado con exito',
+        estudiante: NuevoEstudiante
+    });
 
-})
+
+});
 
 // Iniciamos el servidor
 app.listen(PORT, () => {
