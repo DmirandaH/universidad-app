@@ -2,6 +2,8 @@
 //Importamos Express
 const express = require('express');
 
+const validarEstudiante = require('./middlewares/validarEstudiante');
+
 //Creando una instancia de Express
 const app = express();
 
@@ -84,7 +86,7 @@ app.get('/estudiantes/:id',(req, res) => {
 
 // Creando un nuevo estudiante
 
-app.post('/estudiantes', (req, res) => {
+app.post('/estudiantes', validarEstudiante, (req, res) => {
 
     const {nombre, correo, curso} = req.body;
 

@@ -13,3 +13,5 @@ const validarEstudiante = (req, res, next) => {
     next(); // Permite que continue la petción luego de ser validada
 
 };
+
+module.exports = validarEstudiante;
